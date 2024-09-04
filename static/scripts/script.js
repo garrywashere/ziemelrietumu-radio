@@ -35,8 +35,6 @@ function handlePageVisibility() {
     updateTitleOnVisibilityChange();
 }
 
-window.onload = handlePageVisibility;
-
 function fetchNowPlaying() {
     const scrollingText = document.getElementById("scrolling-text");
     const url = "http://89.221.119.103:8000/status-json.xsl";
@@ -59,5 +57,10 @@ function fetchNowPlaying() {
         });
 }
 
-window.onload = fetchNowPlaying;
+function loadAll () {
+    handlePageVisibility();
+    fetchNowPlaying();
+}
+
+window.onload = loadAll;
 setInterval(fetchNowPlaying, 1000);
