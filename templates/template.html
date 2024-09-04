@@ -2,9 +2,15 @@
 <html lang="en">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="/static/styles/style.css" />
-        <link rel="icon" href="/static/images/logo.png" />
-        <script src="/static/scripts/script.js"></script>
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='/styles/style.css') }}"
+        />
+        <link
+            rel="icon"
+            href="{{ url_for('static', filename='/images/logo.png') }}"
+        />
+        <script src="{{ url_for('static', filename='/scripts/script.js') }}"></script>
         <title>ZiemelRietumu Radio</title>
         <meta charset="UTF-8" />
     </head>
@@ -13,26 +19,18 @@
             <div class="header">
                 <h1 class="title">ZiemelRietumu Radio</h1>
                 <div class="language-selector">
-                    <a href="/">EN</a>
-                    <a href="/lv.html">LV</a>
-                    <a href="/ru.html">RU</a>
+                    {% block language_selector %} {% endblock %}
                 </div>
             </div>
 
             <div class="content">
-                <p class="welcome">
-                    <i>Welcome to ZiemelRietumu Radio</i>, your home for the
-                    best blues, metal, and rock music.
-                </p>
+                <p class="welcome">{% block welcome %} {% endblock %}</p>
                 <img
-                    src="/static/images/logo.png"
+                    src="{{ url_for('static', filename='/images/logo.png') }}"
                     height="125px"
                     width="125px"
                 /><br /><br />
-                <marquee class="scrolling-text"
-                    >Now playing: Classic Blues, Heavy Metal, 80s Rock,
-                    Alternative, Progressive Rock, and more...</marquee
-                >
+                <p class="scrolling-text" id="scrolling-text">Loading...</p>
                 <div class="audio-player">
                     <audio controls autoplay>
                         <source
@@ -42,12 +40,7 @@
                         Your browser does not support the audio element.
                     </audio>
                 </div>
-                <p class="contact">
-                    For requests, contact us at:
-                    <a href="mailto:dj@ZiemelRietumu.live"
-                        >dj@ZiemelRietumu.live</a
-                    >
-                </p>
+                <p class="contact">{% block contact %} {% endblock %}</p>
             </div>
 
             <footer>
