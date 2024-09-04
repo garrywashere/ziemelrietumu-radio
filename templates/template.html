@@ -11,13 +11,13 @@
             href="{{ url_for('static', filename='/images/logo.png') }}"
         />
         <script src="{{ url_for('static', filename='/scripts/script.js') }}"></script>
-        <title>ZiemelRietumu Radio</title>
+        <title>ZiemeļRietumu Radio</title>
         <meta charset="UTF-8" />
     </head>
     <body>
         <div class="container">
             <div class="header">
-                <h1 class="title">ZiemelRietumu Radio</h1>
+                <h1 class="title">ZiemeļRietumu Radio</h1>
                 <div class="language-selector">
                     {% block language_selector %} {% endblock %}
                 </div>
@@ -29,7 +29,7 @@
                     src="{{ url_for('static', filename='/images/logo.png') }}"
                     height="125px"
                     width="125px"
-                /><br /><br />
+                /><br />
                 <p class="scrolling-text" id="scrolling-text">Loading...</p>
                 <div class="audio-player">
                     <audio controls autoplay>

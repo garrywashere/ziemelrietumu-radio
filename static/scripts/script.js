@@ -1,39 +1,4 @@
-function handlePageVisibility() {
-    const originalTitle = document.title;
-
-    const titles = {
-        "/": {
-            default: "We're still here | ZiemelRietumu Radio",
-            focus: "ZiemelRietumu Radio",
-        },
-        "/lv": {
-            default: "Mēs vēl esam šeit | ZiemelRietumu Radio",
-            focus: "ZiemelRietumu Radio",
-        },
-        "/ru": {
-            default: "Мы всё ещё здесь | ZiemelRietumu Radio",
-            focus: "ZiemelRietumu Radio",
-        },
-    };
-
-    function updateTitleOnVisibilityChange() {
-        const path = window.location.pathname;
-        const languageTitles = titles[path] || titles["/"];
-
-        if (document.hidden) {
-            document.title = languageTitles.default;
-        } else {
-            document.title = languageTitles.focus;
-        }
-    }
-
-    document.addEventListener(
-        "visibilitychange",
-        updateTitleOnVisibilityChange
-    );
-
-    updateTitleOnVisibilityChange();
-}
+let currentTrackTitle = "ZiemeļRietumu Radio";
 
 function fetchNowPlaying() {
     const scrollingText = document.getElementById("scrolling-text");
@@ -50,17 +15,42 @@ function fetchNowPlaying() {
             } else {
                 nowPlaying = source.title || "No title available";
             }
+
+            currentTrackTitle = nowPlaying;
             scrollingText.innerHTML = "Now Playing: " + nowPlaying;
+
+            if (document.hidden) {
+                document.title = nowPlaying;
+            } else {
+                document.title = "ZiemeļRietumu Radio";
+            }
         })
         .catch((error) => {
             console.error("Error fetching now playing data:", error);
         });
 }
 
-function loadAll () {
+function handlePageVisibility() {
+    function updateTitleOnVisibilityChange() {
+        if (document.hidden) {
+            document.title = currentTrackTitle;
+        } else {
+            document.title = "ZiemeļRietumu Radio";
+        }
+    }
+
+    document.addEventListener(
+        "visibilitychange",
+        updateTitleOnVisibilityChange
+    );
+    updateTitleOnVisibilityChange();
+}
+
+function loadAll() {
     handlePageVisibility();
     fetchNowPlaying();
 }
 
+setInterval(fetchNowPlaying, 5000);
+
 window.onload = loadAll;
-setInterval(fetchNowPlaying, 1000);
