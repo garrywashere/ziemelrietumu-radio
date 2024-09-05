@@ -2,7 +2,7 @@ let currentTrackTitle = "ZiemeļRietumu Radio";
 
 function fetchNowPlaying() {
     const scrollingText = document.getElementById("scrolling-text");
-    const url = "http://89.221.119.103:8000/status-json.xsl";
+    const url = "/status-json.xsl";
 
     fetch(url)
         .then((response) => response.json())
