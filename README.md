@@ -6,13 +6,17 @@
 
 ## 👀 Overview
 
-This is a simple, fast, and lightweight landing page for the ZiemeļRietumu radio station, built using nothing but Python, HTML and CSS. The goal is to provide a streamlined and efficient user experience, focusing on speed and minimalism.
+This is a simple, fast, and lightweight landing page for the ZiemeļRietumu radio station, built on Docker, HTML, JavaScript and Python. The goal is to provide a streamlined and efficient user experience, focusing on usability, maintainability and deployability.
 
 ## 💡 Features
 
--   **Stream Functionality:** Basic audio stream feature for live radio.
--   **Lightweight Design:** Optimized for speed with no external dependencies.
+-   **Stream Functionality:** Basic audio stream feature for Icecast live radio.
+-   **Lightweight Design:** Doesn't rely on any JavaScript frameworks.
+-   **Ease of Use:** From being deployable as a Docker stack, to having a simple user interface. This project is as easy to use as it gets.
 
 ## ⚙️ Requirements
 
--   (Preferably) A web browser
+-   Docker
+-   Domain
+-   Existing Icecast stream
+-   Internet connection

@@ -29,14 +29,12 @@
                     src="{{ url_for('static', filename='/images/logo.png') }}"
                     height="125px"
                     width="125px"
+                    onclick="alert('moo')"
                 /><br />
                 <p class="scrolling-text" id="scrolling-text">Loading...</p>
                 <div class="audio-player">
                     <audio controls autoplay>
-                        <source
-                            src="/stream"
-                            type="audio/mpeg"
-                        />
+                        <source src="/stream" type="audio/mpeg" />
                         Your browser does not support the audio element.
                     </audio>
                 </div>
