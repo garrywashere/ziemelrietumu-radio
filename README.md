@@ -20,3 +20,65 @@ This is a simple, fast, and lightweight landing page for the ZiemeļRietumu radi
 -   Domain
 -   Existing Icecast stream
 -   Internet connection
+
+## 🐳 Installation - Docker
+
+1. Clone the repository:
+
+    ```bash
+    git clone https://github.com.garrywashere/ziemelrietumu-radio
+    ```
+
+2. Navigate to the project directory:
+
+    ```bash
+    cd ziemelrietumu-radio
+    ```
+
+3. Build the Docker image:
+
+    ```bash
+    docker build -t radio:latest .
+    ```
+
+4. Run the stack:
+
+    ```bash
+    docker compose up -d
+    ```
+
+### 🛜 Setup the Proxy
+
+5. Navigate to `localhost:81`
+
+6. Setup an Admin account, the default credentials are:
+
+    - Username: `admin@example.com`
+    - Password: `changeme`
+
+    You will then be prompted to enter your own credentials.
+
+7. Click `Add Proxy Host`, then fill out `Details` tab:
+
+    - Domain Names: {Your chosen FQDN}
+    - Scheme: `http`
+    - Forward Hostname / IP: `radio-app-1`
+    - Forward Port: `8080`
+
+8. Navigate to the `Custom locations` tab and click `Add Location`:
+
+    - Define location: `/steam`
+    - Scheme: `http`
+    - Forward Hostname / IP: {IP of your Icecast stream}
+    - Forward Port: `8000`
+
+    Click `Add Location` again:
+
+    - Define location: `/status-json.xsl`
+    - Scheme: `http`
+    - Forward Hostname / IP: {IP of your Icecast stream}
+    - Forward Port: `8000`
+
+9. Navigate to the FQDN supplied in the `Details` tab
+
+10. Profit

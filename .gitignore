@@ -1,4 +1,5 @@
-**/Requests.log
-**/__pycache__
+**/__pycache__/
 **/.DS_Store
-**/.venv
+Requests.log
+.venv/
+proxy/

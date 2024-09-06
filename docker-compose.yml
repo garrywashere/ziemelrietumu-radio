@@ -1,0 +1,25 @@
+name: "radio"
+
+services:
+    app:
+        image: "radio:latest"
+        volumes:
+            - ./Requests.log:/app/Requests.log
+        networks:
+            - network
+    proxy:
+        image: "jc21/nginx-proxy-manager:latest"
+        restart: unless-stopped
+        ports:
+            - 80:80
+            - 81:81
+            - 443:443
+        volumes:
+            - ./proxy/data:/data
+            - ./proxy/letencrypt:/etc/letsencrypt
+        networks:
+            - network
+
+networks:
+    network:
+        driver: bridge
