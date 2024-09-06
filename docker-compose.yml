@@ -4,20 +4,8 @@ services:
     app:
         image: "radio:latest"
         restart: unless-stopped
-        # volumes:
-        #   - ./Requests.log:/app/Requests.log
-        networks:
-            - network
-    proxy:
-        image: "jc21/nginx-proxy-manager:latest"
-        restart: unless-stopped
         ports:
-            - 80:80
-            - 127.0.0.1:81:81
-            - 443:443
-        volumes:
-            - ./proxy/data:/data
-            - ./proxy/letencrypt:/etc/letsencrypt
+            - 127.0.0.1:8080:8080
         networks:
             - network
 
