@@ -4,10 +4,21 @@ services:
     app:
         image: "radio:latest"
         restart: unless-stopped
-        ports:
-            - 127.0.0.1:8080:8080
         networks:
             - network
+
+    proxy:
+        image: "nginx:latest"
+        restart: unless-stopped
+        volumes:
+            - ./nginx.conf:/etc/nginx/nginx.conf
+        ports:
+            - 80:80
+        depends_on:
+            - app
+        networks:
+            - network
+        
 
 networks:
     network:
