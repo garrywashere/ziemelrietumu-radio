@@ -3,8 +3,9 @@ name: "radio"
 services:
     app:
         image: "radio:latest"
-        volumes:
-            - ./Requests.log:/app/Requests.log
+        restart: unless-stopped
+        # volumes:
+        #   - ./Requests.log:/app/Requests.log
         networks:
             - network
     proxy:
@@ -12,7 +13,7 @@ services:
         restart: unless-stopped
         ports:
             - 80:80
-            - 81:81
+            - 127.0.0.1:81:81
             - 443:443
         volumes:
             - ./proxy/data:/data
